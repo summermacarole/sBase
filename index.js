@@ -5,8 +5,8 @@
  */
 'use strict';
 window.onload=function(){
-  console.log(Base);
-  alert(Base.getId('id').innerHTML);
-  alert(Base.getName('user')[0].value)
-  alert(Base.getTag('p')[0].innerHTML);
+  var base=new Base();
+  // base.getId('box').css('backgroundColor','green').css('color','red');
+  // alert(base.getTag('p').css('color','red').css('backgroundColor','green').css('color'));
+  base.getTag('p').css('color','red').html('hello');
 }
