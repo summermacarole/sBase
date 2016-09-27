@@ -4,6 +4,9 @@
  * @description :
  */
 'use strict';
+var $=(function(){
+  return new Base();
+})();
 function Base(){
   this.elements=[];
   //获取ID元素
@@ -33,4 +36,16 @@ Base.prototype.html=function(str){
     this.elements[i].innerHTML=str;
   }
   return this;
+}
+//click方法
+Base.prototype.click=function(fn){
+  for(var i=0;i<this.elements.length;i++){
+    this.elements[i].onclick=fn;
+  }
+}
+//hover方法
+Base.prototype.hover=function(fn){
+  for(var i=0;i<this.elements.length;i++){
+    this.elements[i].onmouseover=fn;
+  }
 }
