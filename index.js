@@ -8,5 +8,10 @@ window.onload=function(){
   // var base=new Base();
   // base.getId('box').css('backgroundColor','green').css('color','red');
   // alert(base.getTag('p').css('color','red').css('backgroundColor','green').css('color'));
-  $.getTag('p').css('color','red').html('hello')
+  // $().getId('box').html('hello');
+  // alert($().getId('box').css('color'));
+  // alert($().getClass('red').elements.length);
+  // $().getClass('red','bbb').css('color','red');
+  $().getId('box').css('color','red');
+  $().getId('pox').css('color','blue')
 }
