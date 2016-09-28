@@ -46,6 +46,48 @@ Base.prototype.eq=function(n){
   this.elements.push(element[n])
   return this;
 }
+//添加class
+Base.prototype.addClass=function(className){
+  for(var i=0;i<this.elements.length;i++){
+    if(!this.elements[i].className.match(new RegExp('(\\s|^)'+className+'(\\s|$)'))){
+      this.elements[i].className+=' '+className;
+    }
+  }
+  return this;
+}
+//删除class
+Base.prototype.removeClass=function(className){
+  for(var i=0;i<this.elements.length;i++){
+    if(this.elements[i].className.match(new RegExp('(\\s|^)'+className+'(\\s|$)'))){
+      this.elements[i].className=this.elements[i].className.replace(new RegExp('(\\s|^)'+className+'(\\s|$)'),' ')
+    }
+  }
+  return this;
+}
+//添加rule
+Base.prototype.addRule=function(selector,cssText,position,index){
+  var index=index||0;
+  var position=position||0;
+  var sheet=document.styleSheets[index];
+  if(typeof sheet.insertRule!='undefined'){
+    sheet.insertRule(selector+'{'+cssText+'}',position)
+  }else if(typeof sheet.addRule!='undefined'){
+    sheet.addRule(selector,cssText,position)
+  }
+  return this;
+}
+//删除rule
+Base.prototype.removeRule=function(position,index){
+  var position=position||0;
+  var index=index||0;
+  var sheet=document.styleSheets[index];
+  if(typeof sheet.deleteRule!='undefined'){
+    sheet.deleteRule(position)
+  }else if(typeof sheet.removeRule!='undefined'){
+    sheet.removeRule(position);
+  }
+  return this;
+}
 //css方法
 Base.prototype.css=function(attr,value){
     for(var i=0;i<this.elements.length;i++){
