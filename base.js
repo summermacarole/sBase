@@ -4,11 +4,14 @@
  * @description :
  */
 'use strict';
-var $=function(){
-  return new Base();
+var $=function(_this){
+  return new Base(_this);
 };
-function Base(){
+function Base(_this){
   this.elements=[];
+  if(_this!=undefined){
+    this.elements[0]=_this;
+  }
 }
 //获取ID元素
 Base.prototype.getId=function(id){
@@ -16,8 +19,14 @@ Base.prototype.getId=function(id){
   return this;
 };
 //获取元素节点
-Base.prototype.getTag=function(tag){
-  var tags=document.getElementsByTagName(tag);
+Base.prototype.getTag=function(tag,parent){
+  var node=null;
+  if(parent){
+    node=document.querySelector(parent);
+  }else{
+    node=document;
+  }
+  var tags=node.getElementsByTagName(tag);
   for(var i=0,len=tags.length;i<len;i++){
     this.elements.push(tags[i])
   }
@@ -120,9 +129,24 @@ Base.prototype.click=function(fn){
   return this;
 }
 //hover方法
-Base.prototype.hover=function(fn){
+Base.prototype.hover=function(over,out){
   for(var i=0;i<this.elements.length;i++){
-    this.elements[i].onmouseover=fn;
+    this.elements[i].onmouseover=over;
+    this.elements[i].onmouseout=out;
+  }
+  return this;
+}
+//show方法
+Base.prototype.show=function(){
+  for(var i=0;i<this.elements.length;i++){
+    this.elements[i].style.display='block';
+  }
+  return this;
+}
+//hide方法
+Base.prototype.hide=function(){
+  for(var i=0;i<this.elements.length;i++){
+    this.elements[i].style.display='none';
   }
   return this;
 }

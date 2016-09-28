@@ -1,0 +1,53 @@
+#header {
+    width: 900px;
+    height: 30px;
+    @extend %center;
+    .logo {
+        width: 100px;
+        height: 30px;
+        @extend %fl;
+        img {
+            @extend %show;
+        }
+    }
+    .member {
+        width: 70px;
+        line-height: 30px;
+        @extend %fr;
+        background: url('images/arrow.png') no-repeat right center;
+        position: relative;
+        cursor: pointer;
+        ul {
+            width: 100px;
+            height: 100px;
+            padding-top: 10px;
+            border: 1px solid #999;
+            background: #FBF7E1;
+            border-top: none;
+            list-style: none;
+            position: absolute;
+            top: 30px;
+            left: 0;
+            @extend %hide;
+            li {
+                text-indent: 20px;
+                line-height: 25px;
+                letter-spacing: 2px;
+                a {
+                    @extend %show;
+                    color: #333;
+                    background: url("images/arrow3.gif") no-repeat 5px 45%;
+                    &:hover {
+                        background: #fc0 url("images/arrow4.gif") no-repeat 5px 45%;
+                    }
+                }
+            }
+        }
+    }
+    .login{
+        width:35px;
+        line-height:30px;
+        @extend %fr;
+        cursor: pointer;
+    }
+}
